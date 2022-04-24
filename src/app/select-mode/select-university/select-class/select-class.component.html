@@ -1,0 +1,17 @@
+<input  class="class-select"
+        type = "text" 
+        placeholder = "Clase" 
+        aria-label = "Clase" 
+        matInput 
+        name="clases"
+        list="clases"
+        (click)="actualizarClases()"
+        [(ngModel)]="claseActual"
+        (keyup)="actualizarFormulario()">
+<datalist id="clases">
+  <option *ngFor="let clase of clasesActuales" value={{clase}}></option>
+</datalist>
+
+
+
+

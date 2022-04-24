@@ -1,0 +1,25 @@
+
+
+<form>
+  <h1 class="titulo-busqueda">SELECCIONA TU UNIVERSIDAD</h1>
+  <mat-form-field class="university-select">
+    <mat-select placeholder="Universidad" [(ngModel)]="universidadActual" name="universidad" required>
+      <mat-option *ngFor="let universidad of listaUniversidades" [value]="universidad">{{universidad}}</mat-option>
+    </mat-select>
+  </mat-form-field> 
+
+  <div *ngIf="universidadActual!=''">
+    <h1 class="titulo-busqueda">¿A DÓNDE QUIERE IR?</h1>
+    <app-select-class [universidadSeleccionada]="universidadActual" (newItemEvent)="actualizarFormulario($event)"></app-select-class>
+  </div>
+
+  <div class="botones-navegacion flexbox-row">
+    <div>
+      <button mat-flat-button color="primary" routerLink="/mode" class="boton-navegacion"><mat-icon class="icono-izq">arrow_back</mat-icon>ATRÁS</button>
+    </div>
+    <div>
+      <button mat-flat-button color="primary" *ngIf="formularioRelleno==false" class="boton-navegacion">IR<mat-icon class="icono-der">arrow_forward</mat-icon></button>
+      <button mat-flat-button color="primary" *ngIf="formularioRelleno" routerLink="/mode/search/map" class="boton-navegacion">IR<mat-icon class="icono-der">arrow_forward</mat-icon></button>
+    </div>
+  </div>
+</form>
